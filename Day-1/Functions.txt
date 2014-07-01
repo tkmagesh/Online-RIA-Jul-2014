@@ -1,0 +1,21 @@
+Functions
+==========
+var f = function(){}
+
+var f = new Function()
+
+f.id = 100
+
+f.display = function(){
+	console.log(this.id);
+}
+
+function fn(x){
+	
+}
+
+fn(f);
+
+function(){
+	return f;
+}

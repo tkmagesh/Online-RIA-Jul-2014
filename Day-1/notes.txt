@@ -1,0 +1,95 @@
+JavaScript
+==========
+
+CWA
+JavaScript - basic validations
+
+ASP.NET
+ASP.NET MVC
+JSP+Servelets, Struts
+Ruby On Rails
+
+RIA (flash)
+UI layer runs in the browser (ui request handling, view generation)
+UI Layer - JavaScript
+
+
+JavaScript
+==========
+datatypes (6 types - 3 data) 
+programming constructs - not even classes
+
+What is JavaScript?
+
+1. procedural language
+2. object oriented
+3. functional
+
+In procedural languages, a function is a mere programming construct like "if", "for", "switch case", "while"
+
+In functional languages, a function is treated like first class citizen (type)
+
+Objects
+========
+var o = {}
+
+var o = new Object()
+
+o.id = 100
+
+o.display = function(){
+	console.log(this.id);
+}
+
+function fn(x){
+	
+}
+
+fn(o);
+
+function fn(){
+	return o;
+}
+
+
+========================
+static
+dynamic - JavaScript
+=======================
+
+Emp e = new Emp(101, "Magesh", 10000);
+e.getId()
+e.getName()
+e.getSalary()
+
+e.city = "Bangalore"
+
+==========================
+strongly typed (you have the luxury of the safety net offered by the compiler)
+loosely typed (JavaScript)
+==========================
+
+int n = 10;
+
+n = "abc"
+
+var x;
+
+What is JavaScript? Functional, dynamic & loosely typed language
+
+function add(x,y){
+	return x + y;
+}
+
+add(10,20)
+add("10","20")
+add(f1,f2)
+add([10,20],[30,40])
+add(10)
+add()
+add(10,20,30,40,50)
+add([10,[30,[40,[50]]]])
+add([f1,f2])
+
+
+

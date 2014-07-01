@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator Tests</title>
+	<style type="text/css">
+	.pass{
+		color : green;
+	}
+	.fail{
+		color : red;
+		text-decoration: line-through;
+		font-style: italic;
+	}
+	</style>
+	<script>
+	function test(title, testFn){
+		var newTest = document.createElement("li");
+		newTest.innerHTML = title;
+		var result = testFn();
+		newTest.classList.add(result ? "pass" : "fail");
+		document.getElementById("olTestList").appendChild(newTest);
+	}
+	</script>
+	<script src="Calculator.js"></script>
+	<script src="CalculatorTests.js"></script>
+</head>
+<body>
+	<h1>Calculator</h1>
+	<hr>
+	<ol id="olTestList"></ol>
+</body>
+</html>
