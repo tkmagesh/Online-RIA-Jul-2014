@@ -55,8 +55,22 @@ function init(){
 			expectedResult = 30;
 
 		//act
+		
 		var result = add(f1,f2);
+		
+		//assert
+		return result === expectedResult;
+	});
+	test("Should be able to add functions returning functions returning numbers in string format", function(){
+		//arrange
+		var f1 = function(){ return function(){ return "10"; }},
+			f2 = function(){ return function(){ return "20"; }},
+			expectedResult = 30;
 
+		//act
+		//trace = true;
+		var result = add(f1,f2);
+		//trace = false;
 		//assert
 		return result === expectedResult;
 	});
@@ -77,6 +91,16 @@ function init(){
 
 		//act
 		var result = add();
+
+		//assert
+		return result === expectedResult;
+	});
+	test("Should be able to variable list of numbers", function(){
+		//arrange
+		var	expectedResult = 150;
+
+		//act
+		var result = add(10,20,30,40,50);
 
 		//assert
 		return result === expectedResult;
