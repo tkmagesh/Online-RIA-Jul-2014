@@ -15,10 +15,21 @@
 			document.getElementById("divMessage").innerHTML = counter;
 		}
 	})();
+
+	/*function trackCounter(){
+		var counter = 0;
+		return function(){
+			++counter;
+			document.getElementById("divMessage").innerHTML = counter;
+		}
+	}*/
 	</script>
 </head>
 <body>
-	<input type="button" value="Track" id="btnTrack">
+	<input type="button" value="Track" id="btnTrack" >
 	<div id="divMessage"></div>
+	<!-- <script>
+	document.getElementById("btnTrack").onclick = trackCounter();
+	</script> -->
 </body>
 </html>
