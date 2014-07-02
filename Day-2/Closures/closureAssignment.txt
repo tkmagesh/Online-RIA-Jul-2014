@@ -10,3 +10,27 @@ spinner.down() => 2
 spinner.down() => 1
 spinner.down() => 0
 spinner.down() => -1
+
+solution
+=========
+function getSpinner(){
+  var counter = 0;
+  function increment(){
+     return ++counter;
+  }
+  function decrement(){
+     return --counter;
+  }
+  var obj =  {
+     up : increment,
+     down : decrement
+  };
+  return obj;
+}
+
+write a function (how ?) that finds if a given number is a prime number or not. The result should be able to be cached by the function and used once again the same number is passed.
+
+isPrime(10)
+
+isPrime(10)
+
