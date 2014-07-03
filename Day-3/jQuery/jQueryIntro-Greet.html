@@ -3,17 +3,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>jQuery</title>
+	<style>
+	.highlight{
+		border : 2px solid red;
+	}
+	</style>
+	<script src="jquery-2.1.1.js"></script>
+	<script>
+		/*	
+			var txtBox = document.getElementById("txtFirstName");
+			jQuery(txtBox)
+		*/
+		function highlight(jQObj){
+			jQObj.addClass("highlight");
+		}
+		function clear(){
+			jQuery("*").removeClass("highlight");
+		}
+
+	</script>
 	<script>
 	(function(){
-		window.addEventListener("DOMContentLoaded",init);
-		function init(){
-			document.getElementById("btnGreet").addEventListener("click",onBtnGreetClick);
-		}
+		//$(document).ready(init);
+		//$(init);
+
+		$(function init(){
+			$("#btnGreet").click(onBtnGreetClick);
+		});
 		function onBtnGreetClick(){
-			var firstName = document.getElementById("txtFirstName").value,
-				lastName = document.getElementById("txtLastName").value,
+			var firstName = $("#txtFirstName").val(),
+				lastName = $("#txtLastName").val(),
 				greetMsg = "Hi " + firstName + " " + lastName;
-			document.getElementById("divMessage").innerHTML = greetMsg;
+			$("#divMessage").html(greetMsg);
 		}
 	})();
 	</script>
@@ -28,9 +49,13 @@
 	5. Create / Destroy dom nodes
 	6. Animations
 	-->
-	<div><span>First Name:</span><input type="text" name="" id="txtFirstName"></div>
-	<div><span>Last Name:</span><input type="text" name="" id="txtLastName"></div>
-	<div><input type="button" value="Greet" id="btnGreet"></div>
+	<div><span>First Name:</span><input type="text" name="" id="txtFirstName" class="nameBox"></div>
+	<div><span>Last Name:</span><input type="text" name="" id="txtLastName" class="nameBox"></div>
+	<div><span>Age :</span><input type="text" name="" id="txtAge" class="numberBox"></div>
+	<div>
+		<input type="button" value="Greet" id="btnGreet">
+		<input type="reset" value="Reset">
+	</div>
 	<div>
 		<div id="divMessage"></div>
 	</div>
