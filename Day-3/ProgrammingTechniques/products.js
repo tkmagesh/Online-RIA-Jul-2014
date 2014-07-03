@@ -74,32 +74,111 @@ window.addEventListener("DOMContentLoaded", function(){
 	var allCategory1Products = filter(products,category1ProductSpec);
 	printList("All Category-1 Products", allCategory1Products);
 
-	/*
-	var min = function(list,...){
-
+	
+	var min = function(list,attrName){
+		var result = list[0][attrName];
+		for(var i=1;i<list.length;i++){
+			if (list[i][attrName] < result)
+				result = list[i][attrName];
+		}
+		return result;
 	};
+	printList("Minimum cost = " + min(products,"cost"));
 
-	var max = function(list,...){
-
+	
+	var max = function(list,attrName){
+		var result = list[0][attrName];
+		for(var i=1;i<list.length;i++){
+			if (list[i][attrName] > result)
+				result = list[i][attrName];
+		}
+		return result;
 	};
+	printList("Maximum cost = " + max(products,"cost"));
 
-	var sum = function(list,...){
-
-	};
-
-	var countBy = function(list, predicate){
-
-	};
-	var all = function(list,predicate){
-
-	};
-	var any = function(list,predicate){
-
-	};
-	var groupBy = function(list,....){
-
+	var max = function(list,valueSelectorFn){
+		var result = valueSelectorFn(list[0]);
+		for(var i=1;i<list.length;i++){
+			var currValue = valueSelectorFn(list[i]);
+			if (currValue > result)
+				result = currValue;
+		}
+		return result;	
 	}
-	*/
+	var productValueSelectorFn = function(p){ return p.units * p.cost};
+	printList("Maximum product value = " + max(products,productValueSelectorFn));	
+
+
+	var max = function(list,valueSelector){
+		var valueSelectorFn = typeof valueSelector === "function" ? valueSelector : function(item){return item[valueSelector]};
+		var result = valueSelectorFn(list[0]);
+		for(var i=1;i<list.length;i++){
+			var currValue = valueSelectorFn(list[i]);
+			if (currValue > result)
+				result = currValue;
+		}
+		return result;	
+	}
+
+	printList("Maximum cost = " + max(products,"cost"));
+	printList("Maximum product value = " + max(products,productValueSelectorFn));	
+
+	
+	var sum = function(list,valueSelector){
+		var valueSelectorFn = typeof valueSelector === "function" ? valueSelector : function(item){return item[valueSelector]};
+		var result = valueSelectorFn(list[0]);
+		for(var i=1;i<list.length;i++){
+			var currValue = valueSelectorFn(list[i]);
+				result += currValue;
+		}
+		return result;	
+	}
+	printList("Sum of units = " + sum(products,"units"));
+	printList("Sum of product value (sum(units * cost)) = " + sum(products,function(p){ return p.units * p.cost}));
+
+	
+	var countBy = function(list, predicate){
+		var result = 0;
+		for(var i=0;i<list.length;i++)
+			if (predicate(list[i])) result++;
+		return result;
+	};
+	printList("Number of costly products (cost > 50) = " + countBy(products,function(p){return p.cost > 50;}));
+
+	var all = function(list,predicate){
+		for(var i=0;i<list.length;i++)
+			if (!predicate(list[i]))
+				return false;
+		return true;
+	};
+	printList("Are all the products costly (cost > 50) ? " + all(products,function(p){return p.cost > 50;}));
+
+	var any = function(list,predicate){
+		for(var i=0;i<list.length;i++)
+			if (predicate(list[i]))
+				return true;
+		return false;
+	};
+	printList("Are any of the products costly (cost > 50) ? " + any(products,function(p){return p.cost > 50;}));
+
+	var groupBy = function(list,valueSelector){
+		var valueSelectorFn = typeof valueSelector === "function" ? valueSelector : function(item){return item[valueSelector]};
+		var result = {};
+		for(var i=0;i<list.length;i++){
+			var key = valueSelectorFn(list[i]);
+			result[key] = result[key] || [];
+			result[key].push(list[i]);
+		}
+		return result;
+	}
+	var productsByCost = groupBy(products,function(p){ return p.cost > 50 ? "costly" : "affordable"});
+	printList("[GroupBy] All costly products", productsByCost["costly"]);
+	printList("[GroupBy] All affordable products", productsByCost["affordable"]);
+
+	var productsByCategory = groupBy(products,"category");
+	printList("[GroupBy] All category 1 products", productsByCategory[1]);
+	printList("[GroupBy] All category 2 products", productsByCategory[2]);
+
 
 
 })
