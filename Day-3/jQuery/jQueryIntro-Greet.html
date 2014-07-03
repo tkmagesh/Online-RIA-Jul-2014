@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<script>
+	(function(){
+		window.addEventListener("DOMContentLoaded",init);
+		function init(){
+			document.getElementById("btnGreet").addEventListener("click",onBtnGreetClick);
+		}
+		function onBtnGreetClick(){
+			var firstName = document.getElementById("txtFirstName").value,
+				lastName = document.getElementById("txtLastName").value,
+				greetMsg = "Hi " + firstName + " " + lastName;
+			document.getElementById("divMessage").innerHTML = greetMsg;
+		}
+	})();
+	</script>
+</head>
+<body>
+	<!-- 
+	DOM Manipulation 
+	1. Locating dom nodes
+	2. Manipulate the attributes
+	3. Manipulate styles
+	4. Handle events
+	5. Create / Destroy dom nodes
+	6. Animations
+	-->
+	<div><span>First Name:</span><input type="text" name="" id="txtFirstName"></div>
+	<div><span>Last Name:</span><input type="text" name="" id="txtLastName"></div>
+	<div><input type="button" value="Greet" id="btnGreet"></div>
+	<div>
+		<div id="divMessage"></div>
+	</div>
+</body>
+</html>
