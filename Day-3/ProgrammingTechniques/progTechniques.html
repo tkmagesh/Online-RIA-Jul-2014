@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Programming Techniques</title>
+	<script>
+	function printText(text){
+		document.body.innerHTML += "<div>" + text + "</div>";
+	}
+	function printList(title, list){
+		var attributes = [];
+		var content = "<h3>" + title + "</h3>"
+		content += "<table border='1px solid' cellpadding='5px'><tr>"
+		for(var key in list[0]){
+			attributes.push(key);
+			content += "<th>" + key + "</th>";
+		}
+		content += "</tr>"
+		for(var i = 0;i<list.length;i++){
+			content += "<tr>";
+			for(var index in attributes)
+				content += "<td>" + list[i][attributes[index]] + "</td>"
+			content += "</tr>"
+		}
+		content += "</table><hr/>"
+		document.body.innerHTML += content;
+	}
+	</script>
+	<script src="products.js"></script>
+	
+	
+</head>
+<body>
+	
+</body>
+</html>
