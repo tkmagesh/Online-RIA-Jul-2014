@@ -9,8 +9,49 @@
 		text-decoration: line-through;
 		font-style: italic;
 	}
+	li{
+		list-style: none;
+		margin: 5px;
+		border : 2px solid gray;
+		background-color: #e7e7e7;
+		padding: 5px;
+	}
+	#ulTaskList{
+		width: 400px;
+	}
 	</style>
 	<script src="jquery-2.1.1.js"></script>
+	<script>
+	(function(){
+		$(function(){
+			$("#btnAddTask").click(onBtnAddTaskClick);
+			$("#btnRemoveCompleted").click(onBtnRemoveCompleted);
+		})
+		function onBtnRemoveCompleted(){
+			$("#ulTaskList > li.completed").fadeOut(2000,function(){
+				$(this).remove();
+			});
+		}
+		function onBtnAddTaskClick(){
+			$("<li></li>")
+				.click(onTaskItemClick)
+				.html($("#txtTask").val())
+				.hide()
+				.prependTo("#ulTaskList")
+				.slideDown('slow');
+				
+		}
+		function onTaskItemClick(){
+			/*var $currentTask = $(this);
+			if ($currentTask.hasClass("completed")){
+				$currentTask.removeClass("completed");
+			} else {
+				$currentTask.addClass("completed");
+			}*/
+			$(this).toggleClass("completed");
+		}
+	})();
+	</script>
 </head>
 <body>
 	<h1>Task Manager</h1>
@@ -20,8 +61,7 @@
 	<input type="button" value="Add Task" id="btnAddTask">
 	<input type="button" value="Remove Completed" id="btnRemoveCompleted">
 	<ul id="ulTaskList">
-		<li>Learn jQuery</li>
-		<li class="completed">Explore JavaScript</li>
+		
 	</ul>
 </body>
 </html>
