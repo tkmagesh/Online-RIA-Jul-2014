@@ -3,14 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Task Manager</title>
+	<style>
+	.completed{
+		color : red;
+		text-decoration: line-through;
+		font-style: italic;
+	}
+	</style>
 	<script src="jquery-2.1.1.js"></script>
 </head>
 <body>
 	<h1>Task Manager</h1>
 	<hr>
 	<span>Task :</span>
+	<input type="text" name="" id="txtTask">
 	<input type="button" value="Add Task" id="btnAddTask">
 	<input type="button" value="Remove Completed" id="btnRemoveCompleted">
-	<ul id="ulTaskList"></ul>
+	<ul id="ulTaskList">
+		<li>Learn jQuery</li>
+		<li class="completed">Explore JavaScript</li>
+	</ul>
 </body>
 </html>
